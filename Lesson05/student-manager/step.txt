@@ -1,0 +1,30 @@
+1. Sử dụng template (Student-Management-System)
+    - Từ dạng html 
+    -> Sử dụng https://transform.tools/html-to-jsx
+        -> Chuyển sang jsx 
+2. Tạo ứng dụng reactjs (student-manager)
+    - Mở App.js 
+        + Xóa nội dung
+        + Tạo lại => class App Component
+        + Copy mã jsx vào 
+            <div class="container-fluid">
+                vào đây
+            </div>
+        + Copy thư mục css từ template vào thư mục public của ứng dụng
+        + Liên kết css trong file index.html của public 
+        <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
+==> start ứng dụng 
+3. Phân tích thành phần giao diện và phân chia 
+thành các component cho ứng dụng 
+=> Có 5 component
+App 
+Control
+ListStudent
+Form
+Student 
+
+4. Map data to component
+
+-- App -> ListStudent -> Student
+
+5. Xử lý với form và các chức năng
