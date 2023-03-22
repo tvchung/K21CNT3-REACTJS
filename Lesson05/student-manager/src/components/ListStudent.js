@@ -2,12 +2,22 @@ import React, { Component } from "react";
 import Student from "./Student";
 
 class ListStudent extends Component {
+
+  handleView = (toggle,actionName,student)=>{
+    this.props.onHandleView(toggle,actionName,student);
+  }
+  handleEdit = (toggle,actionName)=>{
+    this.props.onHandleEdit(toggle,actionName);
+  }
   render() {
     // lấy dữ liệu từ props (được truyển từ App xuống)
     let { renderListStudent } = this.props;
     // render data to component (Student)
     let elementStudent = renderListStudent.map((student, index) => {
-      return <Student key={index} stt={index + 1} renderStudent={student} />;
+      return <Student key={index} stt={index + 1} 
+              renderStudent={student} 
+              onHandleView = {this.handleView}
+              onHandleEdit = {this.handleEdit}/>;
     });
     return (
       <div className="card-body">

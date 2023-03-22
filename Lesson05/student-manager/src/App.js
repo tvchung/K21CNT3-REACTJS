@@ -10,13 +10,13 @@ class App extends Component {
       // Đối tượng dữ liệu student
       students : [
         { studentId: "SV001", studentName: "Nguyễn Văn A", age: 20, sex: true, birthDate: "2002-04-23", birthPlace: "HN", address: "25, Vũ Ngọc Phan" },
-        { studentId: "SV002", studefalsentName: "Nguyễn Văn B", age: 21, sex: false, birthDate: "2001-09-09", birthPlace: "ĐN", address: "1, Ngô Quyền" },
+        { studentId: "SV002", studentName: "Nguyễn Văn B", age: 21, sex: false, birthDate: "2001-09-09", birthPlace: "ĐN", address: "1, Ngô Quyền" },
         { studentId: "SV003", studentName: "Nguyễn Văn C", age: 19, sex: true, birthDate: "2003-07-07", birthPlace: "HCM", address: "1, Lý Tự Trọng" },
         { studentId: "SV004", studentName: "Nguyễn Văn D", age: 20, sex: false, birthDate: "2023-07-07", birthPlace: "HCM", address: "123, Lý Tự Trọng" }
       ],
       isToggle:false,
       actionName:"LaLaLaLALa",
-
+      student:'',
     }
   }
   // xử lý với form
@@ -27,11 +27,32 @@ class App extends Component {
       actionName:actionName,
     })
   }
+  handleView = (toggle,actionName,student)=>{
+    this.setState({
+      isToggle:toggle,
+      actionName:actionName,
+      student:student
+    })
+  }
+  handleEdit =(toggle,actionName)=>{
+    this.setState({
+      isToggle:toggle,
+      actionName:actionName,
+    })
+  }
+  handleSubmit = (toggle, actionName)=>{
+    this.setState({
+      isToggle:toggle,
+      actionName:actionName,
+    })
+  }
   render() {
     // render form theo isToggle 
     // console.log("actionName - App:",this.state.actionName);
     let elementForm = this.state.isToggle === true ? 
-      <Form renderActionName={this.state.actionName} /> : "";
+      <Form renderActionName={this.state.actionName} 
+            renderStudent={this.state.student}
+        onHandleSubmit = {this.handleSubmit}/> : "";
 
     return (
       <div className="container-fluid">
@@ -41,7 +62,9 @@ class App extends Component {
               {/* Control component  */}
               <Control onHandleToggle={this.handleToggle} />
               {/* Danh sách sinh viên  */}
-              <ListStudent  renderListStudent={this.state.students} />
+              <ListStudent  renderListStudent={this.state.students} 
+                  onHandleView = {this.handleView}
+                  onHandleEdit = {this.handleEdit}/>
             </div>
           </div>
           <div className="col-5 grid-margin">
